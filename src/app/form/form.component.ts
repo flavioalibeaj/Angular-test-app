@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Form, NgForm} from '@angular/forms';
 
 
 @Component({
@@ -10,6 +10,7 @@ import {NgForm} from '@angular/forms';
 export class FormComponent {
 
   formData: any = {}
+  // formData: Form | undefined // Me jep error nqs e bej keshtu
   visibleData: boolean = false
 
   showData = (userForm: NgForm) => {
