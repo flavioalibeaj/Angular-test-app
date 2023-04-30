@@ -1,8 +1,7 @@
-<figure *ngFor="let comment of commentList" (click)="clickedComment(comment?.email)">
-  <blockquote class="blockquote">
-    <p>{{comment?.name}}</p>
-  </blockquote>
-  <figcaption class="blockquote-footer">
-    {{comment?.body}} <cite title="Source Title">{{comment.email}}</cite>
-  </figcaption>
-</figure>
+<div class="card" *ngFor="let comment of commentList" (click)="clickedComment(comment?.email)">
+  <div class="card-body">
+    <h5 class="card-title">{{comment?.name}}</h5>
+    <p class="card-text">{{comment?.body}}</p>
+    <p class="card-text">{{comment.email}}</p>
+  </div>
+</div>
