@@ -1,1 +1,12 @@
-<p>post works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="card" style="width: 18rem;" *ngFor="let p of post">
+      <img class="card-img-top" [routerLink]="['post-details', p.id]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/375px-Angular_full_color_logo.svg.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{p.title}}</h5>
+        <p class="card-text">{{p.body}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>

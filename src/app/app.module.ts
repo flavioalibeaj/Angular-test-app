@@ -8,7 +8,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule } from '@angular/forms';
-import { AboutComponent } from './about/about.component';
 import { UserDataComponent } from './user-data/user-data.component';
 
 
@@ -19,7 +18,6 @@ import { UserDataComponent } from './user-data/user-data.component';
     SidebarComponent,
     FooterComponent,
     FormComponent,
-    AboutComponent,
     UserDataComponent,
   ],
   imports: [
