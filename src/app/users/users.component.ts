@@ -15,11 +15,11 @@ export class UsersComponent {
     {name: "Elvis", age: 26, email: "email.com", location: "New York", password: "password"}
   ]
 
-  // showAlert = (user: Users): void => {
-  //   if(user.age >= 18){
-  //     alert(user.name)
-  //   } else {
-  //     alert("Burg")
-  //   }
-  // }
+  showAlert = (user: Users): void => {
+    if(user.age >= 18){
+      alert(user.name)
+    } else {
+      alert("Burg")
+    }
+  }
 }

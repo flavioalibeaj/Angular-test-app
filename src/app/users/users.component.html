@@ -1,14 +1,17 @@
 <div class="container-fluid my-5 d-flex justify-content-center align-items-center">
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col" *ngFor="let user of users">
+    <div class="col" *ngFor="let user of users" > <!-- (click) = "showAlert(user)" -->
       <div class="card h-100" style="width: 18rem">
         <div class="card-body">
           <h5 class="card-title">{{user.name}}</h5>
-          <p class="card-text">{{user.age}}</p>
           <p class="card-text">{{user.email}}</p>
-          <p class="card-text">{{user.location}}</p>
           <p class="card-text">{{user.password}}</p>
-          <a routerLink="/${user.name}" class="btn btn-primary">Check {{user.name}} info</a>
+          <p class="card-text">{{user.location}}</p>
+          <p class="card-text">{{user.age}}</p>
+          <!-- <a routerLink="/${user.name}" class="btn btn-primary">Check {{user.name}} info</a> -->
+          <!-- <a [routerLink]="['/', user.name]" class="btn btn-primary">Check {{user.name}} info</a> -->
+          <!-- Si ta bej qe te jet route dinamik? -->
+          <a routerLink="user" class="btn btn-primary">Check {{user.name}} info</a>
         </div>
       </div>
     </div>
