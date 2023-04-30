@@ -5,13 +5,8 @@
         <div class="card-body">
           <h5 class="card-title">{{user.name}}</h5>
           <p class="card-text">{{user.email}}</p>
-          <p class="card-text">{{user.password}}</p>
-          <p class="card-text">{{user.location}}</p>
           <p class="card-text">{{user.age}}</p>
-          <!-- <a routerLink="/${user.name}" class="btn btn-primary">Check {{user.name}} info</a> -->
-          <!-- <a [routerLink]="['/', user.name]" class="btn btn-primary">Check {{user.name}} info</a> -->
-          <!-- Si ta bej qe te jet route dinamik? -->
-          <a routerLink="user" class="btn btn-primary">Check {{user.name}} info</a>
+          <a [routerLink]="['user-data', user.id]" class="btn btn-primary">Check {{user.name}} info</a>
         </div>
       </div>
     </div>

@@ -1,25 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Users } from '../model/users';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit{
 
-  users: Array<Users> = [
-    {name: "Juxhin", age: 27, email: "email.com", location: "California", password: "notmypasword"},
-    {name: "Flavio", age: 20, email: "email.com", location: "Seattle", password: "12345"},
-    {name: "Dafina", age: 17, email: "email.com", location: "Tirane", password: "54321"},
-    {name: "Elvis", age: 26, email: "email.com", location: "New York", password: "password"}
-  ]
+  users: Array<Users> | undefined
 
-  showAlert = (user: Users): void => {
-    if(user.age >= 18){
-      alert(user.name)
-    } else {
-      alert("Burg")
-    }
+
+  constructor(private userService: UserService){}
+
+  ngOnInit(): void {
+    this.getAllPosts()
+  }
+
+  getAllPosts(){
+    this.users = this.userService.getAllPosts()
   }
 }

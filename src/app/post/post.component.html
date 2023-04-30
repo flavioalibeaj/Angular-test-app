@@ -1,11 +1,15 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-around" >
+    <button type="button" class="btn btn-info">Add Post</button>
     <div class="card-container" style="width: 18rem;" *ngFor="let p of post">
       <img class="card-img-top" [routerLink]="['post-details', p.id]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/375px-Angular_full_color_logo.svg.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{p.title}}</h5>
         <p class="card-text">{{p.body}}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="row d-flex justify-content-around" >
+        <button type="button" class="btn btn-danger">Edit Post</button>
+        <button type="button" class="btn btn-dark">Delete Post</button>
+        </div>
       </div>
     </div>
   </div>

@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './users.component';
-import { UserDataComponent } from '../user-data/user-data.component';
+import { UserDataComponent } from './user-data/user-data.component';
 
 const routes: Routes = [
   {path:"", component: UsersComponent},
-  {path:"user", component: UserDataComponent},
-  // {path:":user.name", component: UserDataComponent}
-  // {path:"{{user.name}}", component: UsersComponent}
-  // Si ti vendos dynamic routing
+  {path:"user-data/:id", component: UserDataComponent}
 ];
 
 @NgModule({
