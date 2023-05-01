@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Users } from '../model/users';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,19 @@ export class UserService {
     return this.users
   }
 
-  getUserByUserId(userId: number): Users | undefined{
-    return this.users.find(user => user.id === userId);
+  // getUserByUserId(userId: number): Users | undefined{
+  //   // return this.users.find(user => user.id === userId);
+
+  //   // for(let user of this.users){
+  //   //   if(user.id === userId){
+  //   //     return user
+  //   //   }
+  //   // }
+  //   // return undefined
+  // }
+
+  getUserByUserId(userId: number): Observable<Users | undefined>{
+    const user = this.users.find(user => user.id === userId)
+    return of(user)
   }
 }
