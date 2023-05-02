@@ -22,4 +22,8 @@ export class PostService {
   getCommentsByPostId(postId: number | undefined): Observable<Comments[]>{
     return this.http.get<Comments[]>("https://jsonplaceholder.typicode.com/posts/" +postId + "/comments")
   }
+
+  getNewPost(newPost: Post): Observable<Post>{
+    return this.http.post<Post>("https://jsonplaceholder.typicode.com/posts", newPost)
+  }
 }

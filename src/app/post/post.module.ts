@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from "@angular/common/http";
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { CommentsComponent } from './comments/comments.component'
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +21,8 @@ import { CommentsComponent } from './comments/comments.component'
   imports: [
     CommonModule,
     PostRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [PostService]
 })
