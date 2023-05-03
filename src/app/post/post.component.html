@@ -7,15 +7,15 @@
         <h5 class="card-title">{{p.title}}</h5>
         <p class="card-text">{{p.body}}</p>
         <div class="row d-flex justify-content-around" >
-        <button type="button" class="btn btn-danger">Edit Post</button>
-        <button type="button" class="btn btn-dark">Delete Post</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#secondStaticBackdrop" (click)="updatePost(p)">Edit Post</button>
+        <button type="button" class="btn btn-dark" (click)="deletePost(p)">Delete Post</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Add Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -23,7 +23,7 @@
         <h5 class="modal-title" id="staticBackdropLabel">Add Post</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form #formData="ngForm" (ngSubmit)="showNewPost(formData.value)">
+      <form #formData="ngForm" (ngSubmit)="addNewPost(formData.value)">
       <div class="modal-body d-flex flex-column">
           <div class="input-group flex-nowrap my-3">
             <input type="number" class="form-control" ngModel name="userId" placeholder="userId" aria-label="userId" aria-describedby="addon-wrapping">
@@ -40,6 +40,33 @@
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-info" value="addProduct" data-bs-dismiss="modal">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="secondStaticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form #editedData="ngForm" (ngSubmit)="updateThePost(editedData.value)" >
+      <div class="modal-body d-flex flex-column">
+          <div class="input-group flex-nowrap my-3">
+            <input type="text" class="form-control" ngModel name="title" placeholder="title" aria-label="title" aria-describedby="addon-wrapping">
+          </div>
+          <div class="input-group flex-wrap my-3">
+            <input type="text" class="form-control" ngModel name="body" placeholder="body" aria-label="body" aria-describedby="addon-wrapping">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-info" value="addProduct" data-bs-dismiss="modal">Save changes</button>
         </div>
       </form>
     </div>
