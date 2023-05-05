@@ -60,6 +60,9 @@
     </tr>
   </thead>
   <tbody>
+    <tr *ngIf="allUsers.length < 1">
+      <td colspan="3">No users available</td>
+    </tr>
     <tr *ngFor="let user of allUsers">
       <th scope="row">{{user.id}}</th>
       <td>{{user.name}}</td>

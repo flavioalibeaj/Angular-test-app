@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class UsersComponent implements OnInit{
 
-  allUsers!: Users[]
+  allUsers: Users[] = []
 
   constructor(private userService: UserService){}
 
@@ -19,7 +19,9 @@ export class UsersComponent implements OnInit{
 
   getUser(): void{
     this.userService.getUsers().subscribe(res => {
-      this.allUsers = Object.values(res)
+      if(res){
+        this.allUsers = Object.values(res)
+      }
     })
   }
 
