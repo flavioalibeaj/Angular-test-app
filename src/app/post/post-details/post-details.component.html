@@ -1,3 +1,4 @@
+<!-- <p>{{emri}}</p> -->
 <div class="jumbotron p-3 p-md-5 text-white rounded bg-success">
   <div class="col-md-6 px-0">
     <h1 class="display-4 font-italic">{{postDetails?.title}}</h1>
@@ -6,3 +7,4 @@
   </div>
 </div>
 <app-comments [commentList]="comments" (selectedComment)="showEmail($event)"></app-comments>
+<!-- <app-comments [commentList]="comments" [emri]="emri" (selectedComment)="showEmail($event)"></app-comments> -->

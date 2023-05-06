@@ -15,6 +15,7 @@ export class PostDetailsComponent implements OnInit{
   postId: number | undefined
   comments: Comments[] = []
   emailFromChild: string = ""
+  // emri: string = "Flavio ALibeaj"
 
   constructor(private postService: PostService, private route: ActivatedRoute){
     this.route.params.subscribe(params => {

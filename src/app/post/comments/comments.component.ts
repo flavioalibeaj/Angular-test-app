@@ -9,6 +9,7 @@ import { Comments } from 'src/app/model/comment';
 export class CommentsComponent implements OnInit{
 
   @Input() commentList: Comments[] | undefined = []
+  // @Input() emri: string = ''
   @Output() selectedComment = new EventEmitter<string>
 
   ngOnInit(){
