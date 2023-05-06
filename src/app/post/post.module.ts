@@ -9,6 +9,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { CommentsComponent } from './comments/comments.component'
 import { FormsModule } from '@angular/forms';
+import { UpperLowerPipe } from './upper-lower.pipe';
 
 
 
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     PostComponent,
     PostDetailsComponent,
-    CommentsComponent
+    CommentsComponent,
+    UpperLowerPipe,
   ],
   imports: [
     CommonModule,

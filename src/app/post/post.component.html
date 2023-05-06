@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-around" >
-    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add Post</button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add Post</button>
     <div class="card-container" style="width: 18rem;" *ngFor="let p of post">
       <img class="card-img-top" [routerLink]="['post-details', p.id]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/375px-Angular_full_color_logo.svg.png" alt="Card image cap">
       <div class="card-body">

@@ -6,5 +6,6 @@
     <p class="lead mb-0"><a href="" class="text-white font-weight-bold" *ngIf="emailFromChild">Clicked Email From User List is:{{emailFromChild}}</a></p>
   </div>
 </div>
+
+<div>{{"Komponenti u shfaq me sukses" | upperLower: "uppercase"}}</div>
 <app-comments [commentList]="comments" (selectedComment)="showEmail($event)"></app-comments>
-<!-- <app-comments [commentList]="comments" [emri]="emri" (selectedComment)="showEmail($event)"></app-comments> -->
