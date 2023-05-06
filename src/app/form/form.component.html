@@ -1,6 +1,6 @@
 <!-- Form  -->
 <div class="container-fluid my-5">
-    <form #userForm="ngForm" (ngSubmit)="showData(userForm)">
+    <form #userForm="ngForm" (ngSubmit)="showData(userForm.value)">
         <div class="mb-3">
           <label for="exampleInputName" class="form-label">Full name</label>
           <input type="text" class="form-control" id="exampleInputName" name="name" ngModel>
@@ -19,7 +19,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <div *ngIf="visibleData">
+    <div *ngIf="submitted">
       <p>Name: {{formData.name}}</p>
       <p>Age: {{formData.age}}</p>
       <p>Email: {{formData.email}}</p>

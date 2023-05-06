@@ -10,12 +10,10 @@ import {Form, NgForm} from '@angular/forms';
 export class FormComponent {
 
   formData: any = {}
-  // formData: Form | undefined // Me jep error nqs e bej keshtu
-  visibleData: boolean = false
+  submitted!: boolean
 
-  showData = (userForm: NgForm) => {
-    this.formData = userForm.value;
-    console.log(this.formData)
-    this.visibleData = !this.visibleData
+  showData = (user: {name: string, age: number, email: string, password: string}) => {
+    this.formData = user;
+    this.submitted = true
   }
 }
