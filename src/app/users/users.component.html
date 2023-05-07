@@ -14,10 +14,6 @@
       <form #userData="ngForm" (ngSubmit)="addUser(userData.value)">
       <div class="modal-body">
           <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="floatingIdInput" name="id" placeholder="Your id" ngModel>
-            <label for="floatingIdInput">Id</label>
-          </div>
-          <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingNameInput" name="name" placeholder="Your Name" ngModel>
             <label for="floatingNameInput">Name</label>
           </div>
@@ -50,7 +46,6 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Full Name</th>
       <th scope="col">Age</th>
       <th scope="col">Email</th>
@@ -65,15 +60,55 @@
       <td colspan="3">No users available</td>
     </tr>
     <tr *ngFor="let user of allUsers">
-      <th scope="row">{{user.id}}</th>
       <td>{{user.name}}</td>
       <td>{{user.age}}</td>
       <td>{{user.email}}</td>
       <td>{{user.password}}</td>
       <td>{{user.location}}</td>
-      <td><button type="button" class="btn btn-warning">Edit Post</button></td>
-      <td><button type="button" class="btn btn-danger">Delete Post</button></td>
+      <td><button type="button" class="btn btn-warning" (click)="editUserButton(user)" data-bs-toggle="modal" data-bs-target="#secondStaticBackdrop">Edit Post</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="deleteUser(user)">Delete Post</button></td>
     </tr>
   </tbody>
 </table>
+</div>
+
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="secondStaticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form #editedData="ngForm" (ngSubmit)="saveEditChanges(editedData.value)" >
+      <div class="modal-body d-flex flex-column">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingNameInput" name="name" placeholder="Your Name" ngModel>
+          <label for="floatingNameInput">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="floatingAgeInput" name="age" placeholder="Your age" ngModel>
+          <label for="floatingAgeInput">Age</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="floatingEmailInput" name="email" placeholder="name@example.com" ngModel>
+          <label for="floatingEmailInput">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="floatingPasswordInput" name="password" placeholder="Password" ngModel>
+          <label for="floatingPasswordInput">Password</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingLocationInput" name="location" placeholder="Location" ngModel>
+          <label for="floatingLocationInput">Location</label>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-info" value="addProduct" data-bs-dismiss="modal">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

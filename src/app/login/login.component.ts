@@ -24,6 +24,7 @@ export class LoginComponent {
         return products
       }))
       .subscribe(res => {
+        console.log(res)
         for(const user of res){
           if(user.name === loginUser.username && user.password === loginUser.password){
             this.router.navigate(["/users"])
