@@ -39,7 +39,9 @@ export class UsersComponent implements OnInit{
   }
 
   addUser(user: Users): void{
-    this.userService.addUser(user).subscribe(() => {
+    this.userService.addUser(user).subscribe((response) => {
+      console.log(response.name)
+      user.userId = response.name
       this.allUsers.push(user)
     })
   }
@@ -53,7 +55,7 @@ export class UsersComponent implements OnInit{
   saveEditChanges(user: Users){
     console.log(this.editedUser)
     this.userService.updateUser(this.currentUserId, user).subscribe(updatedUser => {
-      // console.log(updatedUser)
+      console.log(updatedUser)
     })
   }
 

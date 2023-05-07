@@ -15,7 +15,7 @@ export class UserService {
   }
 
   addUser(newUser: Users): Observable<Users>{
-    return this.http.post<Users>("https://js4db-42675-default-rtdb.firebaseio.com/albums.json", newUser)
+    return this.http.post<Users>("https://angulardb-12eb9-default-rtdb.firebaseio.com/newPosts.json", newUser)
   }
 
   deleteUser(userId: string): Observable<any>{
@@ -24,5 +24,9 @@ export class UserService {
 
   updateUser(userId: string, value: Users){
     return this.http.put(`https://angulardb-12eb9-default-rtdb.firebaseio.com/newPosts/${userId}.json`, value)
+  }
+
+  getUserFromUserId(userId: string): Observable<Users>{
+    return this.http.get<Users>(`https://angulardb-12eb9-default-rtdb.firebaseio.com/newPosts/${userId}.json`)
   }
 }

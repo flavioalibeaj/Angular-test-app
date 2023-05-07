@@ -60,7 +60,7 @@
       <td colspan="3">No users available</td>
     </tr>
     <tr *ngFor="let user of allUsers">
-      <td>{{user.name}}</td>
+      <td [routerLink]="[user.userId]">{{user.name}}</td>
       <td>{{user.age}}</td>
       <td>{{user.email}}</td>
       <td>{{user.password}}</td>
