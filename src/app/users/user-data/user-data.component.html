@@ -3,5 +3,15 @@
     <h2 class="display-5">{{userDetails?.name}}</h2>
     <p class="lead">{{userDetails?.age}}</p>
     <p class="lead">{{userId}}</p>
+    <app-messages (newMessage)="addMessage($event)"></app-messages>
   </div>
 </div>
+
+<div *ngIf="messages?.length; else nomessages">
+<div *ngFor="let message of messages">
+    <h3>{{message.message}}</h3>
+</div>
+</div>
+
+
+<ng-template #nomessages>No messages</ng-template>

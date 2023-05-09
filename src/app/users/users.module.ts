@@ -6,6 +6,7 @@ import { UsersComponent } from './users.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserDataComponent } from './user-data/user-data.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 
@@ -13,6 +14,7 @@ import { UserDataComponent } from './user-data/user-data.component';
   declarations: [
     UsersComponent,
     UserDataComponent,
+    MessagesComponent,
   ],
   imports: [
     CommonModule,
