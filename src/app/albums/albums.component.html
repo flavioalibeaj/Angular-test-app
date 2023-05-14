@@ -1,0 +1,83 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>User Id</th>
+      <th>ID</th>
+      <th>Title</th>
+      <th>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add Album</button>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let album of allAlbums; index as i; even as isEven">
+      <tr [class.even]="isEven">
+          <td>{{ album.userId }}</td>
+          <td>{{ album.id }}</td>
+          <td [routerLink]="[album.id, album.title]">{{ album.title }}</td>
+        <td class="d-flex justify-content-around">
+          <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#secondStaticBackdrop">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteAlbum(album)">Delete</button>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+<!-- Add Album -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Album</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form #newAlbum="ngForm" (ngSubmit)="addAlbum(newAlbum.value)">
+        <div class="modal-body">
+          <div class="mb-3">
+            <input class="form-control" ngModel name="userId" type="number" placeholder="User Id" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <input class="form-control" ngModel name="id" type="number" placeholder="Id" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <input class="form-control" ngModel name="title" type="text" placeholder="Title" aria-label="default input example">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Edit Album -->
+<div class="modal fade" id="secondStaticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="secondStaticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="secondStaticBackdropLabel">Edit Album</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form #editedAlbum="ngForm" (ngSubmit)="editAlbum(editedAlbum.value)">
+        <div class="modal-body">
+          <div class="mb-3">
+            <input class="form-control" ngModel name="userId" type="number" placeholder="User Id" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <input class="form-control" ngModel name="id" type="number" placeholder="Id" aria-label="default input example">
+          </div>
+          <div class="mb-3">
+            <input class="form-control" ngModel name="title" type="text" placeholder="Title" aria-label="default input example">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppendWordPipe } from './append-word.pipe';
 import { CoursesComponent } from './courses/courses.component';
 import { CoursesModule } from './courses/courses.module';
+import { AlbumsComponent } from './albums/albums.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { CoursesModule } from './courses/courses.module';
     FormComponent,
     AppendWordPipe,
     CoursesComponent,
+    AlbumsComponent,
   ],
   imports: [
     BrowserModule,
