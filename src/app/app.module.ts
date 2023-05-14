@@ -9,8 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppendWordPipe } from './append-word.pipe';
 import { LoginComponent } from './login/login.component';
-
-
+import { CoursesComponent } from './courses/courses.component';
+import { CoursesModule } from './courses/courses.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,12 +18,14 @@ import { LoginComponent } from './login/login.component';
     FormComponent,
     AppendWordPipe,
     LoginComponent,
+    CoursesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CoursesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

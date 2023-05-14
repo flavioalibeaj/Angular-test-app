@@ -59,8 +59,11 @@
     <tr *ngIf="allUsers.length < 1">
       <td colspan="3">No users available</td>
     </tr>
-    <tr *ngFor="let user of allUsers">
-      <td [routerLink]="[user.userId]">{{user.name}}</td>
+    <tr
+    *ngFor="let user of allUsers;
+      even as isEven"
+      [class.is-even]="isEven">
+      <td [routerLink]="[user.userId]" >{{user.name}}</td>
       <td>{{user.age}}</td>
       <td>{{user.email}}</td>
       <td>{{user.password}}</td>
