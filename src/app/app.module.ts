@@ -8,7 +8,6 @@ import { FormComponent } from './form/form.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppendWordPipe } from './append-word.pipe';
-import { LoginComponent } from './login/login.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CoursesModule } from './courses/courses.module';
 @NgModule({
@@ -17,7 +16,6 @@ import { CoursesModule } from './courses/courses.module';
     NavbarComponent,
     FormComponent,
     AppendWordPipe,
-    LoginComponent,
     CoursesComponent,
   ],
   imports: [

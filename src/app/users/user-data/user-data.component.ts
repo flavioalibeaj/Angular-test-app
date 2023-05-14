@@ -34,7 +34,9 @@ export class UserDataComponent implements OnInit{
 
   addMessage(newMessage: string): void {
     this.userService.addMessage(this.userId, newMessage).subscribe(() => {
-      this.messages.push({ message: newMessage });
+      this.userService.getMessages(this.userId).subscribe((res) => {
+        this.messages = Object.values(res);
+      });
     });
   }
 
