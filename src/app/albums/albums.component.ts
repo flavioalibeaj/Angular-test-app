@@ -9,9 +9,10 @@ import { AlbumsService } from '../services/albums.service';
 })
 export class AlbumsComponent implements OnInit{
 
-  allAlbums?: Album[]
+  allAlbums!: Album[]
   album?: Album
   albumId!: number
+  sliceUpTo: number = 20
 
   constructor(private albumsService: AlbumsService) { }
   ngOnInit(): void {
@@ -38,5 +39,9 @@ export class AlbumsComponent implements OnInit{
   }
 
   editAlbum(album: Album){
+  }
+
+  showMoreAlbums(){
+    this.sliceUpTo += 20
   }
 }

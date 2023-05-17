@@ -10,17 +10,18 @@
     </tr>
   </thead>
   <tbody>
-    <ng-container *ngFor="let album of allAlbums; index as i; even as isEven">
-      <tr [class.even]="isEven">
+    <ng-container *ngFor="let album of allAlbums | slice: 0: sliceUpTo; index as i; even as isEven">
+      <tr [ngClass]="isEven? 'even' : ''">
           <td>{{ album.userId }}</td>
           <td>{{ album.id }}</td>
-          <td [routerLink]="[album.id, album.title]">{{ album.title }}</td>
+          <td [routerLink]="[album.id, album.title]">{{ album.title | uppercase}}</td>
         <td class="d-flex justify-content-around">
           <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#secondStaticBackdrop">Edit</button>
           <button class="btn btn-sm btn-danger" (click)="deleteAlbum(album)">Delete</button>
         </td>
       </tr>
     </ng-container>
+    <button class="btn btn-warning" (click)="showMoreAlbums()" *ngIf="sliceUpTo < allAlbums.length">Click to see more</button>
   </tbody>
 </table>
 

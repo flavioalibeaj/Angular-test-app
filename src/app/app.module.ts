@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -25,7 +25,8 @@ import { AlbumsComponent } from './albums/albums.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CoursesModule
+    CoursesModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
