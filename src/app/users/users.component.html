@@ -9,7 +9,6 @@
         <th scope="col">Password</th>
         <th scope="col">Location</th>
         <th>
-          <!-- Button trigger modal -->
           <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Click here to add users
           </button>
@@ -29,7 +28,7 @@
         <td>{{ user.location }}</td>
         <td>
           <button type="button" class="btn btn-warning" (click)="editUserButton(user)" data-bs-toggle="modal"
-            data-bs-target="#secondStaticBackdrop">
+          data-bs-target="#secondStaticBackdrop">
             Edit Post
           </button>
         </td>
@@ -52,35 +51,35 @@
         <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Users</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form #userData="ngForm" (ngSubmit)="addUser(userData.value)">
+      <form [formGroup]="addUserForm" (ngSubmit)="addUser()">
         <div class="modal-body">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingNameInput" name="name" placeholder="Your Name"
-              ngModel />
+              formControlName="name" />
             <label for="floatingNameInput">Name</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="floatingAgeInput" name="age" placeholder="Your age" ngModel />
+            <input type="number" class="form-control" id="floatingAgeInput" name="age" placeholder="Your age" formControlName="age" />
             <label for="floatingAgeInput">Age</label>
           </div>
           <div class="form-floating mb-3">
             <input type="email" class="form-control" id="floatingEmailInput" name="email" placeholder="name@example.com"
-              ngModel />
+              formControlName="email" />
             <label for="floatingEmailInput">Email address</label>
           </div>
           <div class="form-floating mb-3">
             <input type="password" class="form-control" id="floatingPasswordInput" name="password"
-              placeholder="Password" ngModel />
+              placeholder="Password" formControlName="password" />
             <label for="floatingPasswordInput">Password</label>
           </div>
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingLocationInput" name="location" placeholder="Location"
-              ngModel />
+              formControlName="location" />
             <label for="floatingLocationInput">Location</label>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-warning" data-bs-dismiss="modal">
+          <button type="submit" class="btn btn-warning" data-bs-dismiss="modal" [disabled]="addUserForm.status !== 'VALID'">
             Add User
           </button>
         </div>
@@ -98,35 +97,35 @@
         <h5 class="modal-title" id="staticBackdropLabel">Edit User</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form #editedData="ngForm" (ngSubmit)="saveEditChanges(editedData.value)">
+      <form [formGroup]="editUserForm" (ngSubmit)="saveEditChanges()">
         <div class="modal-body d-flex flex-column">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingNameInput" name="name" placeholder="Your Name"
-              ngModel />
+              formControlName="name" />
             <label for="floatingNameInput">Name</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="floatingAgeInput" name="age" placeholder="Your age" ngModel />
+            <input type="number" class="form-control" id="floatingAgeInput" name="age" placeholder="Your age" formControlName="age" />
             <label for="floatingAgeInput">Age</label>
           </div>
           <div class="form-floating mb-3">
             <input type="email" class="form-control" id="floatingEmailInput" name="email" placeholder="name@example.com"
-              ngModel />
+              formControlName="email" />
             <label for="floatingEmailInput">Email address</label>
           </div>
           <div class="form-floating mb-3">
             <input type="password" class="form-control" id="floatingPasswordInput" name="password"
-              placeholder="Password" ngModel />
+              placeholder="Password" formControlName="password" />
             <label for="floatingPasswordInput">Password</label>
           </div>
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingLocationInput" name="location" placeholder="Location"
-              ngModel />
+              formControlName="location" />
             <label for="floatingLocationInput">Location</label>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-info" value="addProduct" data-bs-dismiss="modal">
+          <button type="submit" class="btn btn-info" value="addProduct" data-bs-dismiss="modal" [disabled]="editUserForm.status !== 'VALID'">
             Save changes
           </button>
         </div>

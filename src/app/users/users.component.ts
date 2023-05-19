@@ -2,83 +2,76 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Users } from '../model/users';
 import { UserService } from '../services/user.service';
 import { map } from 'rxjs';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit{
+export class UsersComponent implements OnInit {
 
+  addUserForm!: FormGroup
+  editUserForm!: FormGroup
   allUsers: Users[] = []
   currentUserId!: string
-  @ViewChild("editedData")  editedUser?: NgForm
+  // @ViewChild("editedData") editedUser?: NgForm
 
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.getUser()
+
+    this.addUserForm = this.createFormGroup()
+    this.editUserForm = this.createFormGroup()
   }
 
-  getUser(): void{
-    this.userService.getUsers().pipe(map(res => {
-      const products = []
-      for(const key in res){
-        products.push({...res[key], userId: key})
-      }
-      return products
-    }))
-    .subscribe(res => {
-      if(res){
-        console.log(res)
-        this.allUsers = Object.values(res)
-      }
+  createFormGroup() {
+    return new FormGroup({
+      name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      age: new FormControl(null, [Validators.required, Validators.min(16)]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+      location: new FormControl(null, Validators.required),
     })
   }
 
-  addUser(user: Users): void{
-    this.userService.addUser(user).subscribe((response) => {
-      console.log(response.name)
-      user.userId = response.name
+  getUser(): void {
+    this.userService.getUsers().pipe(map(res => {
+      const products = []
+      for (const key in res) {
+        products.push({ ...res[key], userId: key })
+      }
+      return products
+    }))
+      .subscribe(res => {
+        if (res) {
+          this.allUsers = Object.values(res)
+        }
+      })
+  }
+
+  addUser(): void {
+    let user = this.addUserForm.value
+    this.userService.addUser(user).subscribe(res => {
+      user.userId = res.name
       this.allUsers.push(user)
     })
   }
 
-  deleteUser(user: Users){
+  deleteUser(user: Users) {
     this.userService.deleteUser(user.userId).subscribe(() => {
       this.allUsers?.splice(this.allUsers.indexOf(user), 1)
     })
   }
 
-  saveEditChanges(user: Users){
-    console.log(this.editedUser)
-    this.userService.updateUser(this.currentUserId, user).subscribe(updatedUser => {
-      console.log(updatedUser)
-    })
+  saveEditChanges(){
+    this.userService.updateUser(this.currentUserId, this.editUserForm.value).subscribe(updatedUser => console.log(updatedUser))
   }
 
   editUserButton(user: Users){
     this.currentUserId = user.userId
-    let currentUser = this.allUsers.find(u => {
-      return u.userId === user.userId
-    })
-
-    this.editedUser?.setValue({
-      name: currentUser?.name,
-      age: currentUser?.age,
-      email: currentUser?.email,
-      password: currentUser?.password,
-      location: currentUser?.location,
-    })
-
-    user.name = this.editedUser?.value.name
-    user.age = this.editedUser?.value.age
-    user.email = this.editedUser?.value.email
-    user.password = this.editedUser?.value.password
-    user.location = this.editedUser?.value.location
-
-    this.saveEditChanges(user);
+    this.saveEditChanges();
   }
 }

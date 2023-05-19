@@ -9,10 +9,11 @@ import { AlbumsService } from '../services/albums.service';
 })
 export class AlbumsComponent implements OnInit{
 
-  allAlbums!: Album[]
+  allAlbums: Album[] = []
   album?: Album
   albumId!: number
   sliceUpTo: number = 20
+  albumsLeftToSee!: number
 
   constructor(private albumsService: AlbumsService) { }
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class AlbumsComponent implements OnInit{
   getAlbums(){
     this.albumsService.getAlbums().subscribe(result => {
       this.allAlbums = result
+      this.albumsLeftToSee = this.allAlbums.length - this.sliceUpTo
     })
   }
 
@@ -35,6 +37,7 @@ export class AlbumsComponent implements OnInit{
     this.albumId = album.id
     this.albumsService.deleteAlbum(album).subscribe(() => {
       this.allAlbums?.splice(this.allAlbums.findIndex(alb => album.id === alb.id), 1)
+      this.albumsLeftToSee--
     })
   }
 
@@ -43,5 +46,6 @@ export class AlbumsComponent implements OnInit{
 
   showMoreAlbums(){
     this.sliceUpTo += 20
+    this.albumsLeftToSee -= 20
   }
 }
