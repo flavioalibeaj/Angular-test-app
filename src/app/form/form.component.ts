@@ -24,7 +24,7 @@ export class FormComponent implements OnInit {
         age: new FormControl(18, Validators.required),
         country: new FormControl("", Validators.required),
         password: new FormControl(null, [Validators.required, Validators.min(8)]),
-        // skills: new FormArray([ new FormControl(), new FormControl(), new FormControl() ])
+        skills: new FormArray([ new FormControl(), new FormControl(), new FormControl() ])
       }),
     })
   }

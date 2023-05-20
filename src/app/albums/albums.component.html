@@ -15,7 +15,7 @@
       <tr [ngClass]="isEven? 'even' : ''">
         <td>{{ album.userId }}</td>
         <td>{{ album.id }}</td>
-        <td [routerLink]="[album.id, album.title]">{{ album.title | uppercase}}</td>
+        <td [routerLink]="['album-data' ,album.id]">{{ album.title | uppercase}}</td>
         <td class="d-flex justify-content-around">
           <button [ngClass]="isEven? 'btn btn-danger' : 'btn btn-warning'" (click)="deleteAlbum(album)">Delete</button>
         </td>

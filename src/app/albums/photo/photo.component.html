@@ -1,0 +1,9 @@
+<div class="container d-flex justify-content-around flex-wrap my-3 gap-5">
+  <div class="card" style="width: 18rem;" *ngFor="let photo of photos" [routerLink]="['photo-details', photo.id]">
+    <img class="card-img-top" src="{{photo.thumbnailUrl}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{photo.title}}</h5>
+      <p class="card-text">ID is {{photo.id}}</p>
+    </div>
+  </div>
+</div>

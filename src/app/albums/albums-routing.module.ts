@@ -5,7 +5,7 @@ import { AlbumdataComponent } from './albumdata/albumdata.component';
 
 const routes: Routes = [
   {path: "", component: AlbumsComponent},
-  {path: ":id/:title", component: AlbumdataComponent}
+  {path: "album-data/:id", loadChildren: ()=> import("./albumdata/albumdata.module").then(m => m.AlbumdataModule)}
 ];
 
 @NgModule({

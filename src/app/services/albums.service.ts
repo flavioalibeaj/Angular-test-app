@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Album } from '../model/album';
+import { Photos } from '../model/photos';
 
 @Injectable({
   providedIn: 'root'
@@ -29,4 +30,10 @@ export class AlbumsService {
   editAlbum(album: Album, newValue: Album): Observable<Album>{
     return this.http.put<Album>(`https://jsonplaceholder.typicode.com/albums/${album.id}`, newValue)
   }
+
+  getPhotosByAlbumId(albumId: number): Observable<Photos[]>{
+    return this.http.get<Photos[]>(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
+  }
+
+  // getPhotoDetailsByPhotoId()
 }
