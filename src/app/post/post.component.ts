@@ -8,38 +8,39 @@ import { NgForm } from '@angular/forms';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit{
+export class PostComponent implements OnInit {
 
   post: Post[] | undefined
-  @ViewChild("editedData")  editedForm?: NgForm
-  currentPostId! : number
+  @ViewChild("editedData") editedForm?: NgForm
+  currentPostId!: number
+  searchInput: string = ''
 
 
-  constructor(private postService: PostService){}
+  constructor(private postService: PostService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.getPost()
-}
+  }
 
-  getPost(): void{
+  getPost(): void {
     this.postService.getPosts().subscribe(result => {
       this.post = result
     })
   }
 
-  addNewPost(newPost: Post){
+  addNewPost(newPost: Post) {
     this.postService.addNewPost(newPost).subscribe(() => {
       this.post?.push(newPost)
     })
   }
 
-  deletePost(post: Post){
+  deletePost(post: Post) {
     this.postService.deletePost(post.id).subscribe(() => {
       this.post?.splice(this.post.indexOf(post), 1)
     })
   }
 
-  updatePost(post: Post){
+  updatePost(post: Post) {
     this.currentPostId = post.id
     let currentPost = this.post?.find(p => {
       return p.id === post.id
@@ -56,13 +57,18 @@ export class PostComponent implements OnInit{
     this.updateThePost(post);
   }
 
-  updateThePost(post: Post){
+  updateThePost(post: Post) {
     this.postService.updatePost(this.currentPostId, post).subscribe(updatedPost => {
 
       let index = this.post?.findIndex(p => p.id === updatedPost.id);
-      if(index !== undefined){
+      if (index !== undefined) {
         this.post![index] = updatedPost;
       }
-      })
+    })
   }
+
+  // searchPosts(data: string) {
+  //   this.searchInput = data
+  //   this.post = this.post?.filter(p => p.title.includes(data))
+  // }
 }

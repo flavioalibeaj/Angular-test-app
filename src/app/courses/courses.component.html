@@ -1,5 +1,9 @@
-<h1>Welcome to the {{title | uppercase}}</h1>
-<input type="text" [(ngModel)] = "title">
-<p *ngIf="courseDesc">You clicked on {{courseDesc}}</p>
-<app-course-card #child [title]="parentVar" (courseDescription)="showDescription($event)"></app-course-card>
+<h1>Welcome to the {{ title | uppercase }}</h1>
+<input type="text" [(ngModel)]="title" />
+<p *ngIf="courseDesc">You clicked on {{ courseDesc }}</p>
+<app-course-card
+  #child
+  [title]="parentVar"
+  (courseDescription)="showDescription($event)"
+></app-course-card>
 <button (click)="showChildInfo()">Show Child Info</button>

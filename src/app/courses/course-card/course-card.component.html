@@ -1,18 +1,30 @@
-<div class="container d-flex flex-row flex-wrap justify-content-evenly align-items-center mt-3">
+<div
+  class="container d-flex flex-row flex-wrap justify-content-evenly align-items-center mt-3"
+>
   <ng-container *ngFor="let course of allCourses; index as i">
     <div class="grid text-center">
-      <div class="card" style="width: 18rem;"  [ngClass]="setClass(course)">
-        <p>{{childVar}}</p>
-        <img src="{{course.iconUrl}}" class="card-img-top" alt="{{course.description}}">
+      <div class="card" style="width: 18rem" [ngClass]="setClass(course)">
+        <p>{{ childVar }}</p>
+        <img
+          src="{{ course.iconUrl }}"
+          class="card-img-top"
+          alt="{{ course.description }}"
+        />
         <div class="card-body" [ngSwitch]="course.category">
-          <h5 class="card-title">{{i+1}}: {{course.description}}</h5>
-          <p class="card-text">{{course.longDescription}}</p>
+          <h5 class="card-title">{{ i + 1 }}: {{ course.description }}</h5>
+          <p class="card-text">{{ course.longDescription }}</p>
           <!-- <p class="card-text">{{course.category}}</p> -->
           <ng-template ngSwitchCase="BEGINNER">Beginner</ng-template>
           <ng-template ngSwitchCase="INTERMEDIATE">Intermediate</ng-template>
           <ng-template ngSwitchCase="ADVANCED">Advanced</ng-template>
-          <p class="card-text">{{course.lessonsCount}}</p>
-          <button class="btn btn-warning" type="button" (click)="onSeeInfoClick(course.description)">See Info</button>
+          <p class="card-text">{{ course.lessonsCount }}</p>
+          <button
+            class="btn btn-warning"
+            type="button"
+            (click)="onSeeInfoClick(course.description)"
+          >
+            See Info
+          </button>
           <button class="btn btn-info" type="button">View Full Course</button>
         </div>
       </div>

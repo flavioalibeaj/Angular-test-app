@@ -1,0 +1,40 @@
+<div
+  class="p-5 mb-4 bg-body-tertiary d-flex justify-content-evenly"
+  style="height: 100%"
+>
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">{{ user?.name }}</h1>
+    <p class="col-md-8 fs-4">{{ user?.email }}</p>
+    <p class="col-md-8 fs-4">{{ user?.username }}</p>
+    <p class="col-md-8 fs-4">{{ user?.phone }}</p>
+    <p class="col-md-8 fs-4">{{ user?.website }}</p>
+    <button
+      class="btn btn-primary btn-lg"
+      type="button"
+      (click)="showAllDataButton()"
+      *ngIf="!dataShowing"
+    >
+      See all data
+    </button>
+  </div>
+  <div *ngIf="dataShowing" style="width: 100%">
+    <table class="table">
+      <thead>
+        <tr col>
+          <th scope="col">Id</th>
+          <th scope="col">City</th>
+          <th scope="col">Street</th>
+          <th scope="col">Company Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{ user?.id }}</th>
+          <td>{{ user?.address?.city }}</td>
+          <td>{{ user?.address?.street }}</td>
+          <td>{{ user?.company?.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

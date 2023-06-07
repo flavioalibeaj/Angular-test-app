@@ -11,6 +11,8 @@ import { AppendWordPipe } from './append-word.pipe';
 import { CoursesComponent } from './courses/courses.component';
 import { CoursesModule } from './courses/courses.module';
 import { AlbumsComponent } from './albums/albums.component';
+import { DataBetweenSiblingsModule } from './data-between-siblings/data-between-siblings.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { AlbumsComponent } from './albums/albums.component';
     FormsModule,
     HttpClientModule,
     CoursesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataBetweenSiblingsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

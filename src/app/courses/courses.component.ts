@@ -10,16 +10,16 @@ export class CoursesComponent {
 
   @ViewChild("child") child!: CourseCardComponent;
 
-  title:string = "courses page";
+  title: string = "courses page";
   parentVar: string = "Parent Variable"
 
   courseDesc!: string
 
-  showDescription(desc: string){
+  showDescription(desc: string) {
     this.courseDesc = desc
   }
 
-  showChildInfo(){
+  showChildInfo() {
     console.log(this.child)
   }
 }

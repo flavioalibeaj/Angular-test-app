@@ -1,0 +1,12 @@
+<div class="my-5 container d-flex flex-wrap gap-3 justify-content-around">
+  <div class="card" style="width: 18rem" *ngFor="let user of allUsers">
+    <img [src]="[photoUrl]" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ user.username }}</h5>
+      <p class="card-text">{{ user.website }}</p>
+      <a [routerLink]="[user.id]" class="btn btn-primary">{{
+        "Check " + user.name + " info"
+      }}</a>
+    </div>
+  </div>
+</div>

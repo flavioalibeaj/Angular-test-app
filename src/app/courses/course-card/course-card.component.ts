@@ -10,7 +10,7 @@ import { Course } from 'src/app/model/course';
 export class CourseCardComponent {
 
   allCourses = COURSES;
-  onSeeInfoClick(description: string){
+  onSeeInfoClick(description: string) {
     this.courseDescription.emit(description);
   }
 
@@ -25,8 +25,8 @@ export class CourseCardComponent {
   }
 
   @Input()
-    childVar!: string;
+  childVar!: string;
 
   @Output()
-    courseDescription = new EventEmitter();
+  courseDescription = new EventEmitter();
 }
